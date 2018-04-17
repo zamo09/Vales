@@ -25,7 +25,7 @@
 			echo "<label>Empleado:<label> <input type='text' name='empleado' value='". $nombreEmpleado[0]  . "' readonly='readonly'><br>
 				  <label>Empresa: </label><input type='text' name='empresa' value='" . $nombreEmpleado[1] . "' readonly='readonly'><br>
 				  <label>Tienda: </label><input type='text' name='tienda' value='" . $tienda . "' readonly='readonly'><br>
-				  <label>Fecha: </label><input type='text' name='fecha' value='" . date("y.m.d") . "'><br>
+				  <label>Fecha: </label><input type='text' name='fecha' value='" . date("y.m.d") . "' readonly='readonly'><br>
 				  <label>Folio: </label><input type='text' name='folio' value='" . ($maxFolio[0]+1) . "' readonly='readonly'>";
 			$selectventa = mysql_query("SELECT P.nombre, V.cantidad, V.precio FROM productos P, venta V WHERE V.id_venta = ".($maxFolio[0]+1)." AND V.id_producto = P.id;",$conexion);
 		}else{
@@ -33,7 +33,7 @@
 			echo "<label>Empleado:<label> <input type='text' name='empleado' value='". $nombreEmpleado[0]  . "' readonly='readonly'><br>
 				  <label>Empresa: </label><input type='text' name='empresa' value='" . $nombreEmpleado[1] . "' readonly='readonly'><br>
 				  <label>Tienda: </label><input type='text' name='tienda' value='" . $tienda . "' readonly='readonly'><br>
-				  <label>Fecha: </label><input type='text' name='fecha' value='" . date("y.m.d") . "'><br>
+				  <label>Fecha: </label><input type='text' name='fecha' value='" . date("y.m.d") . "' readonly='readonly'><br>
 				  <label>Folio: </label><input type='text' name='folio' value='" . $folio[0] . "' readonly='readonly'>";
 			$selectventa = mysql_query("SELECT P.nombre, V.cantidad, V.precio, V.id_producto, V.id_venta FROM productos P, venta V WHERE V.id_venta = ".$folio[0]." AND V.id_producto = P.id;",$conexion);
 		}

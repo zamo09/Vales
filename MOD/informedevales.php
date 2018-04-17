@@ -1,9 +1,10 @@
 <?php
 $fecha = $_GET["fecha"];
 $tienda = $_GET["tiendas"];
-	include("conexion.php");
+	include("../PHP/conexion.php");
 	$conexion = mysql_connect($servidor,$usuario,$contraseña);
 				mysql_select_db($BD,$conexion);
+				mysql_query("SET NAMES 'utf8'");	
 	$selectProducto = mysql_query("SELECT E.nombre, V.id_venta FROM vale V, empleados E, venta Ve WHERE V.id_empleado = E.id_empleado AND V.id_venta = Ve.id_venta AND Ve.fecha = '" . $fecha ."' AND Ve.tienda = '" . $tienda . "' GROUP BY E.nombre; ");
 	?>
 	<table class="egt">

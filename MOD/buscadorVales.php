@@ -18,7 +18,7 @@
 <!-- busqueda por ID -->
 	<form action="informedevalesId.php" method="GET"><br>
 		<label>Folio:</label>
-		<input type="text" name="numpiso" onkeypress="return valida(event)">
+		<input type="text" name="folio" onkeypress="return valida(event)">
 		<input type="submit" name="" value="Enviar" id="boton1">
 	</form>
 	<script>
@@ -28,6 +28,9 @@
 	    if (tecla==8){
 	        return true;
 	    }  
+	    if (tecla==13 ){
+	        return true;
+	    }
 	    // Patron de entrada, en este caso solo acepta numeros
 	    patron =/[0-9]/;
 	    tecla_final = String.fromCharCode(tecla);

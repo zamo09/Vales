@@ -40,7 +40,7 @@
 			<div class="botonera">
 				<button type="sumit">Continuar</button>
 				<a href="PHP/exportar.php">Exportar</a>
-				<a href="PHP/fechatienda.php">Resumen</a>
+				<a href="MOD/buscadorVales.php">Resumen</a>
 			</div>
 		</div>
 			</form>

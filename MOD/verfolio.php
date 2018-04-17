@@ -1,8 +1,9 @@
 <?php
 $folio = $_GET["folio"];
-	include("conexion.php");
+	include("../PHP/conexion.php");
 	$conexion = mysql_connect($servidor,$usuario,$contraseña);
 				mysql_select_db($BD,$conexion);
+				mysql_query("SET NAMES 'utf8'");	
 	$selectventa = mysql_query("SELECT P.nombre, V.cantidad, V.precio, V.id_producto, V.id_venta FROM productos P, venta V WHERE V.id_venta = ".$folio." AND V.id_producto = P.id;",$conexion);
 	?>
 	<table class="egt">

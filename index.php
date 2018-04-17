@@ -1,6 +1,6 @@
 <html>
-	<head>
-		<meta charset="utf-8">
+	<head>	
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 		<title>Vales de Despensa CBA</title>
 		<link rel="stylesheet" type="text/css" href="CSS/main.css"/>
 
@@ -12,7 +12,7 @@
 			<div id="contenedor">
 				<h1 class="cabecera">Vales de CBA</h1>
 				<div class="cont">
-				<p>Para registrar el consumo de los vales de despensa internos de CBA se utilizara la siguiente app.</p>
+				<p>Para registrar el consumo de los vales de despensa internos de CBA se utilizara la siguiente app. ñ</p>
 				<div class="select">
 					<div class="empleado">
 						<label>Empleado: </label><br>
@@ -21,6 +21,7 @@
 							include ("PHP/conexion.php");
 							$conexion = mysql_connect($servidor,$usuario,$contraseña);
 										mysql_select_db($BD, $conexion);
+							mysql_query("SET NAMES 'utf8'");			    
 							$sql="SELECT nombre,id_empleado FROM empleados WHERE activo = 1;";
 							$result = mysql_query($sql,$conexion);
 							while ($fila = mysql_fetch_array($result)){

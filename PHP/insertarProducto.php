@@ -11,6 +11,7 @@
 	include("conexion.php");
 	$conexion = mysql_connect($servidor,$usuario,$contraseña);
 				mysql_select_db($BD,$conexion);
+				mysql_query("SET NAMES 'utf8'");	
 	if (empty($codigo)){
 		$selectProducto = mysql_query("SELECT id, precio FROM productos WHERE nombre LIKE '" . $nombre . "%';");
 	?>

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Venta por Vale</title>
 </head>
 <body>
@@ -12,12 +13,14 @@
 		include("PHP/conexion.php");
 		$conexion = mysql_connect($servidor,$usuario,$contraseña);
 					mysql_select_db($BD,$conexion);
+					mysql_query("SET NAMES 'utf8'");		
 		$selectEmpleado = mysql_query("SELECT nombre,empresa FROM empleados WHERE id_empleado = " . $empleado . " AND activo = 1;",$conexion);
 		$nombreEmpleado = mysql_fetch_row($selectEmpleado);
 		$selectFolio = mysql_query("SELECT id_venta FROM vale WHERE id_empleado = " . $empleado . " AND activo = 1",$conexion);
 		$folio = mysql_fetch_row($selectFolio);
 		$venta = "";
 		if (empty($folio[0])){
+			mysql_query("SET NAMES 'utf8'");	
 			$selectMaxFolio = mysql_query("SELECT MAX(id_venta) FROM vale;");
 			$maxFolio = mysql_fetch_row($selectMaxFolio);
 			$venta = ($maxFolio[0]+1);
@@ -29,6 +32,7 @@
 				  <label>Folio: </label><input type='text' name='folio' value='" . ($maxFolio[0]+1) . "' readonly='readonly'>";
 			$selectventa = mysql_query("SELECT P.nombre, V.cantidad, V.precio FROM productos P, venta V WHERE V.id_venta = ".($maxFolio[0]+1)." AND V.id_producto = P.id;",$conexion);
 		}else{
+			mysql_query("SET NAMES 'utf8'");	
 			$venta = $folio[0];
 			echo "<label>Empleado:<label> <input type='text' name='empleado' value='". $nombreEmpleado[0]  . "' readonly='readonly'><br>
 				  <label>Empresa: </label><input type='text' name='empresa' value='" . $nombreEmpleado[1] . "' readonly='readonly'><br>

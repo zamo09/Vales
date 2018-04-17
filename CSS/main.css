@@ -1,0 +1,95 @@
+.padre {
+  /*IMPORTANTE*/
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hijo {
+  width: 500px;
+}
+
+.cabecera{
+	background-color: #1fd9e8;
+	border-radius: 10px 10px 0px 0px;
+	height: 50px;
+}
+h1{
+	text-align: center;
+	color: white;
+}
+
+p{
+	text-align: center;
+}
+
+label{
+	text-align: center;
+}
+select {
+	align-items: center;
+	border: 2px solid #1fd9e8;
+	width: 300px;
+	overflow: hidden;
+	background: #fff url("flecha-abajo.gif") no-repeat 90% center;
+	text-align: center;
+	padding: 5px 8px;
+	width: 75%;
+}
+.select{
+	text-align: center;
+	padding-bottom: 5ex;
+}
+
+.empleado{
+	margin-top: 5px;
+}
+
+.botonera{
+	margin-left: 10px;
+	margin-bottom: 15px;
+	text-align: center;
+}
+
+.cont{
+	border: 2px solid #1fd9e8;
+	border-radius: 0px 0px 10px 10px;
+	margin-top: -23px;
+	margin-bottom: 10px;
+}
+
+button {
+ border: none;
+ background: #3a7999;
+ color: #f2f2f2;
+ padding: 10px;
+ font-size: 15px;
+ border-radius: 5px;
+ position: relative;
+ box-sizing: border-box;
+ transition: all 500ms ease;
+}
+
+button:hover {
+ background: rgba(0,0,0,0);
+ color: #3a7999;
+ box-shadow: inset 0 0 0 3px #3a7999;
+}
+
+a{
+ border: none;
+ background: #3a7999;
+ color: #f2f2f2;
+ padding: 10px;
+ font-size: 15px;
+ border-radius: 5px;
+ position: relative;
+ box-sizing: border-box;
+ transition: all 500ms ease;	
+}
+
+a:hover {
+ background: rgba(0,0,0,0);
+ color: #3a7999;
+ box-shadow: inset 0 0 0 3px #3a7999;
+}

@@ -20,7 +20,7 @@ $tienda = $_GET["tiendas"];
 			echo '<tr>';
 			echo '<td>' . $fila[0] . '</td>';
 			echo '<td> ' . $fila[1] . ' </td>';
-			echo "<td><a href=\"verfolio.php?folio=".$fila[1]."\">Selccionar</a></td>";
+			echo "<td><a href=\"verfolio.php?folio=".$fila[1]."&empleado=" . $fila[0] . "&tienda=" . $tienda . "\">Selccionar</a></td>";
 			echo '</tr>';
 		}
 

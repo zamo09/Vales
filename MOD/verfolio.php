@@ -7,10 +7,13 @@ $tienda = $_GET["tienda"];
 				mysql_select_db($BD,$conexion);
 				mysql_query("SET NAMES 'utf8'");	
 	$selectventa = mysql_query("SELECT P.nombre, V.cantidad, V.precio, V.id_producto, V.id_venta FROM productos P, venta V WHERE V.id_venta = ".$folio." AND V.id_producto = P.id;",$conexion);
+	$selectFecha = mysql_query("SELECT fecha FROM venta WHERE id_venta = " . $folio);
+	$sqlFecha = mysql_fetch_row($selectFecha);
+	$fecha = $sqlFecha[0];
 	?>
 
 	<h1><?php echo $empleado; ?> Folio: <?php echo $folio; ?></h1>
-	<h2>Fecha del vale: <?php echo date("d.m.y"); ?>  Tienda: <?php echo $tienda; ?> </h2>
+	<h2>Fecha del vale: <?php echo $fecha ?>  Tienda: <?php echo $tienda; ?> </h2>
 	<table class="egt">
 	  <tr>
 	    <th>Nombre</th>

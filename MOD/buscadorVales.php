@@ -16,9 +16,9 @@
 	</form>
 
 <!-- busqueda por ID -->
-	<form action="informedevalesId.php" method="GET"><br>
+	<form action="../PHP/buscarvaleid.php" method="GET"><br>
 		<label>Folio:</label>
-		<input type="text" name="folio" onkeypress="return valida(event)">
+		<input type="text" name="folio" onkeypress="return valida(event)" required>
 		<input type="submit" name="" value="Enviar" id="boton1">
 	</form>
 	<script>

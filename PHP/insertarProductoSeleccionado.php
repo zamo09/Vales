@@ -8,6 +8,7 @@
 	include("conexion.php");
 	$conexion = mysql_connect($servidor,$usuario,$contraseña);
 				mysql_select_db($BD,$conexion);
+				mysql_query("SET NAMES 'utf8'");	
 	$selectProducto = mysql_query("SELECT id, precio FROM productos WHERE id = " . $codigo . ";");
 		$SQLProducto = mysql_fetch_array($selectProducto);
 		$selectIdEmpleado = mysql_query("SELECT id_empleado FROM empleados WHERE nombre = '" . $empleado . "';");

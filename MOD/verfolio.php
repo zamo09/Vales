@@ -43,3 +43,5 @@ $tienda = $_GET["tienda"];
 		<td align="right" colspan="4"><?php echo "TOTAL: $" . $total; ?></td>
 	  </tr>
 	</table>
+<a href=javascript:window.print();>Imprimir</a>
+<input name="Restablecer" type="reset" value="Atras" onClick="history.back()">

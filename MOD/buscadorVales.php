@@ -36,6 +36,8 @@
 	    tecla_final = String.fromCharCode(tecla);
 	    return patron.test(tecla_final);
 	}
-	</script>
+	</script><br>
+	<input name="Restablecer" type="reset" value="Atras" onClick="history.back()">
+
 </body>
 </html>

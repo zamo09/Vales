@@ -27,4 +27,5 @@ $tienda = $_GET["tiendas"];
 	echo '</table>';
 
 
-?>
+?><br>
+<input name="Restablecer" type="reset" value="Atras" onClick="history.back()">

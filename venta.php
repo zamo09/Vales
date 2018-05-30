@@ -3,9 +3,15 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 	<title>Venta por Vale</title>
+	<link href="CSS/tablecloth.css" rel="stylesheet" type="text/css" media="screen" />
+		<script type="text/javascript" src="JS/tablecloth.js"></script>
 </head>
 <body>
+	<div id="container">	
+	<div id="content">
+		
 	<form action="PHP/insertarProducto.php" method="GET">
+		<h1 class="central">Registro de Nuevo Vale</h1>
 	<?php 
 		$empleado = $_GET["empleado"];
 		$tienda = $_GET["tiendas"];
@@ -48,6 +54,7 @@
 			$selectventa = mysql_query("SELECT P.nombre, V.cantidad, V.precio, V.id_producto, V.id_venta FROM productos P, venta V WHERE V.id_venta = ".$folio[0]." AND V.id_producto = P.id;",$conexion);
 		}
 	?>
+		<br>
 		<a href="index.php">Regresar</a>
 		<hr style="border-color:red;">
 		<h1>Buscador de productos</h1>
@@ -92,5 +99,7 @@
 	<?php
 	echo "<a href=\"PHP/cerrarVenta.php?idVenta=". $venta."&total=".$total."\" >Cerrar Venta</a>";
 	?>
-</body>
+</div>
+		</div>	
+	</body>
 </html>

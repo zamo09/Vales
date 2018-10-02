@@ -12,7 +12,7 @@
 			<div id="contenedor">
 				<h1 class="cabecera">Vales de CBA</h1>
 				<div class="cont">
-				<p>Para registrar el consumo de los vales de despensa internos de CBA se utilizara la siguiente app. ñ</p>
+				<p>Para registrar el consumo de los vales de despensa internos de CBA se utilizara la siguiente app</p>
 				<div class="select">
 					<div class="empleado">
 						<label>Empleado: </label><br>

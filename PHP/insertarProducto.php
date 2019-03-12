@@ -8,12 +8,9 @@
 	$nombre = $_GET["nombre_producto"];
 	$cantidad = $_GET["cantidad"];
 	$SQLProducto = "";
-	include("conexion.php");
-	$conexion = mysql_connect($servidor,$usuario,$contraseña);
-				mysql_select_db($BD,$conexion);
-				mysql_query("SET NAMES 'utf8'");	
+	include("conexion.php");	
 	if (empty($codigo)){
-		$selectProducto = mysql_query("SELECT id, precio FROM productos WHERE nombre LIKE '" . $nombre . "%';");
+		$selectProducto = $con->query("SELECT id, precio FROM productos WHERE nombre LIKE '" . $nombre . "%';");
 	?>
 	<table class="egt">
 	  <tr>
@@ -25,9 +22,9 @@
 	  </tr>
 	  <a href=""></a>
 	  <?php
-		while ($fila = mysql_fetch_array($selectProducto)){
-			$TodosProductos = mysql_query("SELECT codigo, precio, nombre,id FROM productos WHERE id =" . $fila[0] . " ;");
-			$filaProducto = mysql_fetch_row($TodosProductos);
+		while ($fila = $selectProducto->fetch_row()){
+			$TodosProductos = $con->query("SELECT codigo, precio, nombre,id FROM productos WHERE id =" . $fila[0] . " ;");
+			$filaProducto = $TodosProductos->fetch_row();
 			echo '<tr>';
 			echo '<td>' . $filaProducto[2] . '</td>';
 			echo '<td>' . $filaProducto[1] . '</td>';
@@ -36,20 +33,18 @@
 			echo "<td><a href=\"insertarProductoSeleccionado.php?codigo=".$filaProducto[3]."&empleado=".$empleado."&cantidad=".$cantidad."&tienda=".$tienda."&fecha=".$fecha."&folio=".$folio."\">Selccionar</a></td>";
 			echo '</tr>';
 		}
-
 	echo '</table>';
-
-
 	}else{
-		 insertar($codigo,$empleado, $cantidad, $tienda,$fecha, $folio,$conexion);
+	  insertar($codigo,$empleado, $cantidad, $tienda,$fecha, $folio);
 	}
 
-	function insertar($codigo,$empleado, $cantidad, $tienda,$fecha, $folio,$conexion) {
-      $selectProducto = mysql_query("SELECT id, precio FROM productos WHERE codigo = " . $codigo . ";");
-		$SQLProducto = mysql_fetch_array($selectProducto);
-		$selectIdEmpleado = mysql_query("SELECT id_empleado FROM empleados WHERE nombre = '" . $empleado . "';");
-		$SQLempleado = mysql_fetch_array($selectIdEmpleado);
-		$InsertVenta = mysql_query("INSERT INTO venta (id_producto, cantidad, tienda, precio, fecha, id_venta) VALUES (" . $SQLProducto[0] . ", " . $cantidad . ", '" . $tienda . "', " .$SQLProducto[1] . ",'" . $fecha ."'," .$folio .");",$conexion);
+	function insertar($codigo,$empleado, $cantidad, $tienda,$fecha, $folio) {
+		include("conexion.php");	
+      $selectProducto = $con->query("SELECT id, precio FROM productos WHERE codigo = " . $codigo . ";");
+		$SQLProducto = $selectProducto->fetch_row();
+		$selectIdEmpleado = $con->query("SELECT id_empleado FROM empleados WHERE nombre = '" . $empleado . "';");
+		$SQLempleado = $selectIdEmpleado->fetch_row();
+		$InsertVenta = $con->query("INSERT INTO venta (id_producto, cantidad, tienda, precio, fecha, id_venta) VALUES (" . $SQLProducto[0] . ", " . $cantidad . ", '" . $tienda . "', " .$SQLProducto[1] . ",'" . $fecha ."'," .$folio .");");
 		if ($InsertVenta){
 			echo "si entro";
 			header ("Location: ../venta.php?estatus=1&empleado=".$SQLempleado[0]."&tiendas=".$tienda);

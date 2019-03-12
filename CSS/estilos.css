@@ -1,0 +1,42 @@
+@font-face {
+font-family: KaushanScript;
+src: url("../FONT/KaushanScript-Regular.ttf");
+}
+@font-face {
+font-family: Courgette;
+src: url("../FONT/Courgette-Regular.ttf");
+}
+@font-face {
+font-family: FredokaOne;
+src: url("../FONT/FredokaOne-Regular.ttf");
+}
+.boton{
+	margin-left: 10px;
+    margin-top: 10px;
+    float: left;
+}
+.boton-enviar{
+	margin-top: 8px;
+}
+.total{
+	font-size: 25px;
+}
+.titulos{
+	font-family: KaushanScript;
+}
+.titulos2{
+	font-family: Courgette;
+}
+.titulos3{
+	font-family: FredokaOne;
+}
+body{
+  background-image: url(../img/Fondo.jpg) ;
+   background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        height:63%;
+}

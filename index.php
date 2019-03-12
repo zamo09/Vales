@@ -1,51 +1,73 @@
 <html>
-	<head>	
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-		<title>Vales de Despensa CBA</title>
-		<link rel="stylesheet" type="text/css" href="CSS/main.css"/>
-
-	</head>
+<head>	
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+	<title>Vales de Despensa CBA</title>
+	<link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css"/>
+	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
+	<link rel="stylesheet" type="text/css" href="CSS/chosen.css">
+	<link rel="icon" type="image/png" href="img/vale.ico" />
+</head>
 <body>
-	<div class="padre">
-		<div class="hijo">
-			<form action="venta.php" method="GET">
-			<div id="contenedor">
-				<h1 class="cabecera">Vales de CBA</h1>
-				<div class="cont">
-				<p>Para registrar el consumo de los vales de despensa internos de CBA se utilizara la siguiente app. ñ</p>
-				<div class="select">
-					<div class="empleado">
-						<label>Empleado: </label><br>
-						<select name="empleado">
-							<?php
-							include ("PHP/conexion.php");
-							$conexion = mysql_connect($servidor,$usuario,$contraseña);
-										mysql_select_db($BD, $conexion);
-							mysql_query("SET NAMES 'utf8'");			    
-							$sql="SELECT nombre,id_empleado FROM empleados WHERE activo = 1;";
-							$result = mysql_query($sql,$conexion);
-							while ($fila = mysql_fetch_array($result)){
-								echo '<option value="' . $fila["id_empleado"] . '">' . $fila["nombre"] . '</option>' ;
-							}
-							?>
-						</select>
+	<div class="backgroundimg">
+		
+
+	<form action="venta.php" method="GET">
+		<div class="container "><br>
+			<div class="row h-100 justify-content-center align-items-center">
+				<div class="col-md-12">
+					<h1 class="text-center titulos">Vales de CBA</h1>
+					<p class="text-center titulos2">Pagina para registro de vales de trabajadores de Cafe Córdoba y Casa Baltazar.</p>
+					<div class="row justify-content-md-center">
+						<div class="col-md-4">
+							<label>Empleado: </label><br>
+							<select name="empleado" data-placeholder="Selecciona un Empleado..." class="form-control chosen-select text-center" required>
+								<option value=""></option>
+								<?php
+								include ("PHP/conexion.php");								    
+								$sql="SELECT nombre,id_empleado FROM empleados WHERE activo = 1 ORDER BY nombre;";
+								$selectTable = $con->query($sql);		
+								while ($fila = $selectTable->fetch_row()){
+									echo '<option value="' . $fila[1] . '">' . $fila[0] . '</option>' ;
+								}
+								?>
+							</select>
+						</div>
 					</div>
-				<br>
-				<label>Tienda:</label><br>
-					<select name="tiendas">
-						<option value="CDB">CDB</option>
-						<option value="LHU">LHU</option>
-					</select>
+					<div class="row justify-content-md-center">
+						<div class="col-md-4">
+							<label>Tienda:</label><br>
+							<select name="tiendas" class="form-control text-center">
+								<option value="CDB">CDB</option>
+								<option value="LHU">LHU</option>
+							</select>
+						</div>
+					</div><br>
+					<div class="row justify-content-md-center">
+						<div class="col-md-1">
+							<button class="btn btn-success" type="sumit">Continuar </button>					
+						</div>&nbsp;&nbsp;
+						<div class="col-md-1">
+							<a class="btn btn-danger" href="PHP/exportar.php">Exportar</a>
+						</div>
+						<div class="col-md-1">
+							<a class="btn btn-warning" href="MOD/buscadorVales.php">Resumen</a>
+						</div>
+					</div>
 				</div>
-			<div class="botonera">
-				<button type="sumit">Continuar</button>
-				<a href="PHP/exportar.php">Exportar</a>
-				<a href="MOD/buscadorVales.php">Resumen</a>
 			</div>
 		</div>
-			</form>
-				
+	</form>
 		</div>
-	</div>
+	<script src="JS/jquery-3.2.1.min.js" type="text/javascript"></script>
+	<script src="JS/chosen.jquery.js" type="text/javascript"></script>
+	<script src="JS/prism.js" type="text/javascript"></script>
+	<script src="JS/init.js" type="text/javascript"></script>
+	<script src="JS/bootstrap.js" type="text/javascript"></script>
+	<script>
+		$(function() {
+			$('.chosen-select').chosen();
+			$('.chosen-select-deselect').chosen({ allow_single_deselect: true });
+		});
+	</script>
 </body>
 </html>

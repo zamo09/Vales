@@ -1,10 +1,10 @@
 <?php
 set_time_limit(300);
 $user = "odoo";
-$password = "elshaddai";
+$password = "19flash64";
 $dbname = "BALTAZAR";
 $port = "5432";
-$host = "10.0.0.8";
+$host = "10.0.0.14";
 
 $cadenaConexion = "host=$host port=$port dbname=$dbname user=$user password=$password";
 $conexion = pg_connect($cadenaConexion) or die("Error en la Conexión: ".pg_last_error());
@@ -17,22 +17,18 @@ $resultado = pg_query($conexion, $query);
 $numReg = pg_num_rows($resultado);
 
 if($numReg>0){
-    $servidor = "10.0.0.194"; //Nombre del servidor al que nos conectamos
-    $usuario = "zamo"; //Usuario con privilegios para la conexion
-    $contraseña = "1614zamo"; //La contraseña del usuario que utilizaremos
-    $BD = "vales"; //El nombre de la base de datos
-    $conexionSQL = mysql_connect($servidor, $usuario,$contraseña);
-    mysql_select_db($BD, $conexionSQL);
+              include ("conexion.php");                   
+
     $SQL = "";
     $SQL2 = "";
     $DELETE = "DELETE FROM productos;";
-    $result2 = mysql_query($DELETE);
+    $result2 = $con->query($DELETE);
     $results ="";
     $contador = 0;
 while ($fila=pg_fetch_array($resultado)) {
   $SQL = "INSERT INTO productos (id,codigo,nombre,precio,unidad) VALUES (". $fila[0] .",'" . $fila[1] . "','" . $fila[2] . "'," . $fila[3] .",'" . $fila[4] ."');";
   $SQL2 = $SQL2 . $SQL;
-  $results=mysql_query($SQL);
+  $results=$con->query($SQL);
 }
 }else{
   echo "No hay Registros";

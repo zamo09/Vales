@@ -54,7 +54,7 @@ $tienda = $_GET["tienda"];
 		<td class="text-center total titulos"><?php echo "$" . $total; ?></td>
 	  </tr>
 	</table>
-<a class="btn btn-primary" href=javascript:window.print();>Imprimir</a>
+<a class="btn btn-primary" href="imprimir.php?folio=<?php echo $folio ?>&empleado=">Imprimir</a>
 <input class="btn btn-warning" name="Restablecer" type="reset" value="Atras" onClick="history.back()">
 </div>
 		</div>	

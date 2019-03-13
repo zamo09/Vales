@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link rel="stylesheet" type="text/css" href="CSS/chosen.css">
 	<link rel="icon" type="image/png" href="img/vale.ico" />
+	<script type="text/javascript" src="JS/sweetalert.min.js"></script>
 </head>
 <body>
 	<div class="backgroundimg">
@@ -47,7 +48,7 @@
 							<button class="btn btn-success" type="sumit">Continuar </button>					
 						</div>&nbsp;&nbsp;
 						<div class="col-md-1">
-							<a class="btn btn-danger" href="PHP/exportar.php">Exportar</a>
+							<button onClick="mensaje()" class="btn btn-danger">Exportar</button>
 						</div>
 						<div class="col-md-1">
 							<a class="btn btn-warning" href="MOD/buscadorVales.php">Resumen</a>
@@ -68,6 +69,26 @@
 			$('.chosen-select').chosen();
 			$('.chosen-select-deselect').chosen({ allow_single_deselect: true });
 		});
+		function mensaje() {
+			swal({
+				title: "Quieres Actualizar Precios?",
+				text: "Este proceso toma algo de tiempo y cambiara todos los precios del Sistema",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+			})
+			.then((willDelete) => {
+				if (willDelete) {
+					swal("Correcto los precios se estan actualizando", {
+						icon: "success",
+					});
+					window.location.href = "PHP/exportar.php";
+				} else {
+					swal("Tranquilo todo sigue igual");
+				}
+			});
+		}
+
 	</script>
 </body>
 </html>

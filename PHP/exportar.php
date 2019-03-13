@@ -1,4 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Carga</title>
+  <link rel="stylesheet" type="text/css" media="screen" href="../CSS/carga.css" />
+  <script type="text/javascript" src="../JS/sweetalert.min.js"></script>
+</head>
+<body>
+  <script>    
+    carga(){
+        var contenedor = document.getElementById('contenedor_carga');
+        contenedor.style.visibility = 'hidden';
+        contenedor.style.opacity = '0';        
+    }
+</script>
+<div id='contenedor_carga'>
+                    <div id='carga'>
+
+                    </div>
+                </div>
 <?php
+
 set_time_limit(300);
 $user = "odoo";
 $password = "19flash64";
@@ -28,6 +49,11 @@ if($numReg>0){
 while ($fila=pg_fetch_array($resultado)) {
   $SQL = "INSERT INTO productos (id,codigo,nombre,precio,unidad) VALUES (". $fila[0] .",'" . $fila[1] . "','" . $fila[2] . "'," . $fila[3] .",'" . $fila[4] ."');";
   $SQL2 = $SQL2 . $SQL;
+      echo "<script>";
+
+echo "carga();";
+
+echo "</script>";
   $results=$con->query($SQL);
 }
 }else{
@@ -35,11 +61,20 @@ while ($fila=pg_fetch_array($resultado)) {
 }
 pg_close($conexion);
 if ($results){
-  header ("Location: ../");
-      
-    }else{
+    print '<script> 
+    swal({
+      title: "Perfecto", 
+      text: "Se actualizaron los precios con respecto a Odoo", 
+      icon: "success",
+      button: false,
+    });
+    </script>';
+    print '<script>setTimeout ("window.location=\'../\';", 3000);</script>';
+  }else{
       echo $results;
       echo $contador;
       echo $SQL2;
     }
 ?>
+</body>
+</html>

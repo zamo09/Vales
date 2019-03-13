@@ -58,7 +58,8 @@
 			</div>
 		</div>
 	</form>
-		</div>
+		</div>>
+                </div>
 	<script src="JS/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="JS/chosen.jquery.js" type="text/javascript"></script>
 	<script src="JS/prism.js" type="text/javascript"></script>
@@ -81,14 +82,14 @@
 				if (willDelete) {
 					swal("Correcto los precios se estan actualizando", {
 						icon: "success",
+						button: false,
 					});
 					window.location.href = "PHP/exportar.php";
 				} else {
 					swal("Tranquilo todo sigue igual");
 				}
 			});
-		}
-
+		};
 	</script>
 </body>
 </html>

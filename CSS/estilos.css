@@ -40,3 +40,7 @@ body{
         -o-background-size: cover;
         height:63%;
 }
+
+.login{
+   animation-duration: 500ms;
+}

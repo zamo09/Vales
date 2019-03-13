@@ -10,56 +10,56 @@
 </head>
 <body>
 	<div class="backgroundimg">
-		
-
-	<form action="venta.php" method="GET">
-		<div class="container "><br>
-			<div class="row h-100 justify-content-center align-items-center">
-				<div class="col-md-12">
-					<h1 class="text-center titulos">Vales de CBA</h1>
-					<p class="text-center titulos2">Pagina para registro de vales de trabajadores de Cafe Córdoba y Casa Baltazar.</p>
-					<div class="row justify-content-md-center">
-						<div class="col-md-4">
-							<label>Empleado: </label><br>
-							<select name="empleado" data-placeholder="Selecciona un Empleado..." class="form-control chosen-select text-center" required>
-								<option value=""></option>
-								<?php
-								include ("PHP/conexion.php");								    
-								$sql="SELECT nombre,id_empleado FROM empleados WHERE activo = 1 ORDER BY nombre;";
-								$selectTable = $con->query($sql);		
-								while ($fila = $selectTable->fetch_row()){
-									echo '<option value="' . $fila[1] . '">' . $fila[0] . '</option>' ;
-								}
-								?>
-							</select>
+		<form action="venta.php" method="GET">
+			<div class="container "><br>
+				<div class="row h-100 justify-content-center align-items-center">
+					<div class="col-md-12">
+						<h1 class="text-center titulos">Vales de CBA</h1>
+						<p class="text-center titulos2">Pagina para registro de vales de trabajadores de Cafe Córdoba y Casa Baltazar.</p>
+						<div class="row justify-content-md-center">
+							<div class="col-md-4">
+								<label>Empleado: </label><br>
+								<select name="empleado" data-placeholder="Selecciona un Empleado..." class="form-control chosen-select text-center" required>
+									<option value=""></option>
+									<?php
+									include ("PHP/conexion.php");								    
+									$sql="SELECT nombre,id_empleado FROM empleados WHERE activo = 1 ORDER BY nombre;";
+									$selectTable = $con->query($sql);		
+									while ($fila = $selectTable->fetch_row()){
+										echo '<option value="' . $fila[1] . '">' . $fila[0] . '</option>' ;
+									}
+									?>
+								</select>
+							</div>
 						</div>
-					</div>
-					<div class="row justify-content-md-center">
-						<div class="col-md-4">
-							<label>Tienda:</label><br>
-							<select name="tiendas" class="form-control text-center">
-								<option value="CDB">CDB</option>
-								<option value="LHU">LHU</option>
-							</select>
-						</div>
-					</div><br>
-					<div class="row justify-content-md-center">
-						<div class="col-md-1">
-							<button class="btn btn-success" type="sumit">Continuar </button>					
-						</div>&nbsp;&nbsp;
-						<div class="col-md-1">
-							<button onClick="mensaje()" class="btn btn-danger">Exportar</button>
-						</div>
-						<div class="col-md-1">
-							<a class="btn btn-warning" href="MOD/buscadorVales.php">Resumen</a>
+						<div class="row justify-content-md-center">
+							<div class="col-md-4">
+								<label>Tienda:</label><br>
+								<select name="tiendas" class="form-control text-center">
+									<option value="CDB">CDB</option>
+									<option value="LHU">LHU</option>
+								</select>
+							</div>
+						</div><br>
+						<div class="row justify-content-md-center">
+							<div class="col-md-1">
+								<button class="btn btn-success" type="sumit">Continuar </button>					
+							</div>&nbsp;&nbsp;
+							<div class="col-md-1">
+								<button onClick="mensaje()" class="btn btn-danger">Exportar</button>
+							</div>
+							<div class="col-md-1">
+								<a class="btn btn-warning" href="MOD/buscadorVales.php">Resumen</a>
+							</div>
+							<div class="col-md-1">
+								<a class="btn btn-info" href="MOD/login.php">Admin</a>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</form>
-		</div>>
-                </div>
+		</form>
+	</div>
 	<script src="JS/jquery-3.2.1.min.js" type="text/javascript"></script>
 	<script src="JS/chosen.jquery.js" type="text/javascript"></script>
 	<script src="JS/prism.js" type="text/javascript"></script>

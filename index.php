@@ -5,13 +5,14 @@
 	<link rel="stylesheet" type="text/css" href="CSS/bootstrap.min.css"/>
 	<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
 	<link rel="stylesheet" type="text/css" href="CSS/chosen.css">
+	<link rel="stylesheet" type="text/css" href="CSS/animate.css">
 	<link rel="icon" type="image/png" href="img/vale.ico" />
 	<script type="text/javascript" src="JS/sweetalert.min.js"></script>
 </head>
 <body>
 	<div class="backgroundimg">
 		<form action="venta.php" method="GET">
-			<div class="container "><br>
+			<div class="container animated login fadeInDown "><br>
 				<div class="row h-100 justify-content-center align-items-center">
 					<div class="col-md-12">
 						<h1 class="text-center titulos">Vales de CBA</h1>

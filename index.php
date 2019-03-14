@@ -12,7 +12,7 @@
 <body>
 	<div class="backgroundimg">
 		<form action="venta.php" method="GET">
-			<div class="container animated login fadeInDown "><br>
+			<div id="Contenedor" class="container animated login zoomIn "><br>
 				<div class="row h-100 justify-content-center align-items-center">
 					<div class="col-md-12">
 						<h1 class="text-center titulos">Vales de CBA</h1>
@@ -53,7 +53,7 @@
 								<a class="btn btn-warning" href="MOD/buscadorVales.php">Resumen</a>
 							</div>
 							<div class="col-md-1">
-								<a class="btn btn-info" href="MOD/login.php">Admin</a>
+								<button class="btn btn-info" onClick="salida()">Admin</button>
 							</div>
 						</div>
 					</div>
@@ -90,6 +90,10 @@
 					swal("Tranquilo todo sigue igual");
 				}
 			});
+		};
+		function salida(){
+			document.getElementById("Contenedor").className = "container animated login zoomOut";
+			window.location.href = "MOD/";
 		};
 	</script>
 </body>

@@ -134,11 +134,6 @@ INSERT INTO empleados (nombre,empresa,activo) VALUES ('JORGE ALEJANDRO MORA VALD
 INSERT INTO empleados (nombre,empresa,activo) VALUES ('JONATHAN SAINZ GASPERIN','CBA',1);
 INSERT INTO empleados (nombre,empresa,activo) VALUES ('ANGEL JAFFAR ROBLES RODRIGUEZ','CBA',1);
 
-
-
-
-
-
 INSERT INTO ventas (id_venta, id_empleado,activo) VALUES (1,1,1);
 
 SELECT P.nombre, V.cantidad, V.precio FROM productos P, venta V WHERE V.id_venta = 1 AND V.id_producto = P.id;
@@ -149,3 +144,13 @@ WHERE V.id_venta = 1 AND V.id_producto = ;
 SELECT E.nombre, V.id_venta FROM vale V, empleados E, venta Ve WHERE 
 V.id_empleado = E.id_empleado AND V.id_venta = Ve.id_venta AND Ve.fecha = '2018-04-09' 
 GROUP BY E.nombre; 
+
+CREATE TABLE usuarios(
+	id_usuario INT NOT NULL AUTO_INCREMENT COMMENT 'Clave Primaria',
+	usuario VARCHAR(100) NOT NULL COMMENT 'Nombre de usuario',
+	contraseña VARCHAR(20) NOT NULL COMMENT 'contraseña del usuario',
+	activo BIT NOT NULL COMMENT 'Para saber si esta activo',
+	PRIMARY KEY (id_usuario)
+);
+
+INSERT INTO usuarios (usuario,contraseña,activo) VALUES ('Samuel','123',1);

@@ -44,3 +44,11 @@ body{
 .login{
    animation-duration: 500ms;
 }
+
+.margenSuperios{
+  margin-top: 1.5em;
+}
+
+.fondoblanco{
+  background-color: white;
+}

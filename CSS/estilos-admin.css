@@ -31,7 +31,7 @@ src: url("../FONT/FredokaOne-Regular.ttf");
 	font-family: FredokaOne;
 }
 body{
-  background-image: url(../img/Fondo.jpg) ;
+  background-image: url(../img/Fondo-Admin.jpg) ;
    background-position: center;
         background-repeat: no-repeat;
         background-size: cover;

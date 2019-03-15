@@ -149,8 +149,9 @@ CREATE TABLE usuarios(
 	id_usuario INT NOT NULL AUTO_INCREMENT COMMENT 'Clave Primaria',
 	usuario VARCHAR(100) NOT NULL COMMENT 'Nombre de usuario',
 	contraseña VARCHAR(20) NOT NULL COMMENT 'contraseña del usuario',
+	tipo VARCHAR(3) NOT NULL COMMENT 'Tipo de usuario',
 	activo BIT NOT NULL COMMENT 'Para saber si esta activo',
 	PRIMARY KEY (id_usuario)
 );
 
-INSERT INTO usuarios (usuario,contraseña,activo) VALUES ('Samuel','123',1);
+INSERT INTO usuarios (usuario,contraseña,tipo,activo) VALUES ('Samuel','123','Adm',1);

@@ -2,7 +2,7 @@
 include("../../PHP/conexion.php");	
 $selectusuarios = $con->query("SELECT * FROM usuarios WHERE activo = 1");
 ?>
-<div id="Contenedor" class="container animated login zoomIn bg-light">
+<div id="listu" class="container bg-light">
 	<div class="row h-100 justify-content-center align-items-center">
 		<div class="col-md-12 margenSuperios">
 			<h1 class="titulos text-center">Lista de Usuarios</h1>
@@ -23,7 +23,10 @@ $selectusuarios = $con->query("SELECT * FROM usuarios WHERE activo = 1");
 								echo '<td>' . $fila[1] . '</td>';
 								echo '<td class="text-center">' . $fila[2] . '</td>';
 								echo '<td class="text-center">' . $fila[3] . '</td>';
-								echo '<td class="text-center"><a id="list-empleado" class="btn btn-success btn-sm"><i class="fas fa-address-book"></i> Borrar</a></td>';
+								echo '<td class="text-center">
+										<a onClick="eliminarUsuario('.$fila[0].')" id="eliminarusuario" class="text-light btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i> Eliminar</a>
+										<a onClick="modificarUsuario('.$fila[0].')" id="eliminarusuario" class="text-light btn btn-info btn-sm"><i class="fas fa-edit"></i> Modificar</a>
+								</td>';
 								echo '</tr>';
 							}
 							?>

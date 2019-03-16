@@ -189,7 +189,44 @@
 		$("#wrapper").toggleClass("toggled");
 	});
 
+	function eliminarUsuario(idusuairo){
+		$.ajax({
+			url: "../PHP/eliminar_usuario.php",
+			method: "POST",
+			data: {id:idusuairo},
+			cache: "false",
+			beforeSend:function(){
+				$('#eliminarusuario').val("Eliminando...");
+			},
+			success:function(data){
+				$('#eliminarusuario').val("Eliminar");
+				if (data=="1"){
+					swal("Usuario Eliminado", ("Ahora el usuario ya NO podra entrar al sistema" ), "success");
+					$("#Contenedor").load('admin/list_Usuarios.php');
+				}else{
+					swal("Tenemos un problema", "No se pudo eliminar el usuario" , "error");
+				}
+			}
+		});
+	};
 
+	function modificarUsuario(idusuairo){
+		$("#Contenedor").load('admin/mod_Usuarios.php');
+		$.ajax({
+			url: "../PHP/consultar_usuario.php",
+			method: "POST",
+			data: {id:idusuairo},
+			cache: "false",
+			success:function(data){
+				document.getElementById("userm").value=""+data['usuario']+"";
+				if(data['tipo'] == "Adm"){
+					select.selectedIndex=1;
+				}else{
+					select.selectedIndex=2;
+				}
+			}
+		});
+	};
 
 	function salida(){
 		$("#Contenedor").load('admin/inicio.php');

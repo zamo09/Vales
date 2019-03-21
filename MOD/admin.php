@@ -126,7 +126,7 @@
 		};
 	};
 
-	function agregaruruario(){
+	function agregarusuario(){
 		var usuario = $('#user').val();
 		var tipo = $('#tipo').val();
 		var pass = $('#pass').val();
@@ -153,6 +153,40 @@
 							document.getElementById("conpass").value = "";
 						}else{
 							swal("Tenemos un problema", "No se pudo agregar el usuario" , "error");
+						}
+					}
+				});
+			}else{
+				swal("Contraseñas malas", "Las contraseñas no coinciden" , "error");
+			}
+		}else{
+			swal("No me engañes", "Te faltan datos" , "error");
+		};
+	};
+
+	function modUser(){
+		var usuario = $('#userm').val();
+		var tipo = $('#tipo').val();
+		var pass = $('#pass').val();
+		var conpass = $('#conpass').val();
+		var id = $('#iduser').val();
+		if ($.trim(usuario).length > 0 && $.trim(tipo).length > 0 && $.trim(pass).length > 0 && $.trim(conpass).length > 0){
+			if (pass == conpass) {					
+				$.ajax({
+					url: "../PHP/mod_usuario.php",
+					method: "POST",
+					data: {usuario:usuario, tipo:tipo, pass:pass, id: id},
+					cache: "false",
+					beforeSend:function(){
+						$('#btn_adduser').val("Validando...");
+					},
+					success:function(data){
+						$('#btn_adduser').val("Continuar");
+						if (data=="1"){
+							swal("Perfecto!!", ("Ahora el usuario " + usuario + " fue modificado" ), "success");
+							$("#Contenedor").load('admin/list_Usuarios.php');
+						}else{
+							swal("Tenemos un problema", "No se pudo modificar el usuario" , "error");
 						}
 					}
 				});
@@ -216,10 +250,37 @@
 			url: "../PHP/consultar_usuario.php",
 			method: "POST",
 			data: {id:idusuairo},
+			dataType: 'json',
 			cache: "false",
 			success:function(data){
-				document.getElementById("userm").value=""+data['usuario']+"";
-				if(data['tipo'] == "Adm"){
+				var select = document.getElementById('tipo');
+				document.getElementById("userm").value=""+data[1]+"";
+				document.getElementById("conpass").value=""+data[2]+"";
+				document.getElementById("pass").value=""+data[2]+"";
+				document.getElementById("iduser").value= ""+data[0]+""
+				if(data[3] == "Adm"){
+					select.selectedIndex=1;
+				}else{
+					select.selectedIndex=2;
+				}
+			}
+		});
+	};
+
+	function modEmpleado(idusuario){
+		$("#Contenedor").load('admin/mod_Empleado.php');
+
+		$.ajax({
+			url: "../PHP/consultar_empleado.php",
+			method: "POST",
+			data: {id:idusuario},
+			dataType: 'json',
+			cache: "false",
+			success:function(data){
+				document.getElementById("empleado").value=""+data[1]+"";
+				var select = document.getElementById('empresa');
+				
+				if(data[2] == "CBA"){
 					select.selectedIndex=1;
 				}else{
 					select.selectedIndex=2;
@@ -230,6 +291,10 @@
 
 	function salida(){
 		$("#Contenedor").load('admin/inicio.php');
+	};
+
+	function salidaModificarUsuario(){
+		$("#Contenedor").load('admin/list_Usuarios.php');
 	};
 </script>
 </html>

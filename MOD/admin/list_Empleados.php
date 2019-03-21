@@ -21,7 +21,9 @@ $selectempleados = $con->query("SELECT * FROM empleados WHERE activo = 1");
 								echo '<tr >';
 								echo '<td>' . $fila[1] . '</td>';
 								echo '<td class="text-center">' . $fila[2] . '</td>';
-								echo '<td class="text-center"><a id="list-empleado" class="btn btn-success btn-sm"><i class="fas fa-address-book"></i> Borrar</a></td>';
+								echo '<td class="text-center"><a id="list-empleado" class="text-light btn btn-success btn-sm"><i class="fas fa-address-book"></i> Borrar</a>
+								<a onClick="modEmpleado('.$fila[0].')" id="modificarusuario" class="text-light btn btn-info btn-sm"><i class="fas fa-edit"></i> Modificar</a>
+								</td>';
 								echo '</tr>';
 							}
 							?>

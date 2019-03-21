@@ -48,7 +48,7 @@
 					<button class="btn btn-danger" onClick="salida()" type="sumit"><i class="fas fa-times "></i> Cancelar </button>					
 				</div>&nbsp;&nbsp;
 				<div class="col-md-2">
-					<button class="btn btn-success" onClick="agregaruruario()" name="btn_adduser" id="btn_adduser"><i class="fas fa-check-circle"></i> Continuar</button>
+					<button class="btn btn-success" onClick="agregarusuario()" name="btn_adduser" id="btn_adduser"><i class="fas fa-check-circle"></i> Continuar</button>
 				</div>
 			</div>
 		</div>

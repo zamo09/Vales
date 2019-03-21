@@ -2,7 +2,7 @@
 include("../../PHP/conexion.php");	
 $selectusuarios = $con->query("SELECT * FROM usuarios WHERE activo = 1");
 ?>
-<div id="listu" class="container bg-light">
+<div id="listu" class="container bg-light animated login zoomIn">
 	<div class="row h-100 justify-content-center align-items-center">
 		<div class="col-md-12 margenSuperios">
 			<h1 class="titulos text-center">Lista de Usuarios</h1>

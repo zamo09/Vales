@@ -20,7 +20,7 @@ if (isset($_SESSION["user"])){
 	<div id="Contenedor" class="container animated login zoomIn ">
 		<div class="row h-100 justify-content-center align-items-center">
 			<div class="col-md-12">
-				<h1 class="titulos text-center">Inicio de sesion</h1>
+				<h1 class="titulos text-center">Prueba de Inicio de sesion</h1>
 				<div class="row justify-content-md-center">
 					<div class="col-md-4">
 						<div class="row justify-content-md-center">

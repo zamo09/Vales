@@ -8,7 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="../CSS/animate.css">
 	<link rel="stylesheet" type="text/css" href="../CSS/datatables.min.css">
 	<link rel="icon" type="image/png" href="../img/vale.ico" />
-
+<script type="text/javascript" src="../JS/sweetalert.min.js"></script>
 </head>
 <body>
 	<?php 
@@ -32,13 +32,19 @@
 						<a id="inicio" class="sidebar-heading border-top titulos"><i class="fas fa-home"></i> Casa Baltazar</a>
 					</div>
 					<div class="list-group list-group-flush">
+						<?php 
+						if($_SESSION["tipo"] == "Adm"){
+						?>
 						<button id="adduser" class="list-group-item list-group-item-action bg-light titulos2"><i class="fas fa-user-plus"></i> Agregar Usuario</button>
+						<?php }?>
 						<button id="addempl" class="list-group-item list-group-item-action bg-light titulos2"><i class="fas fa-plus"></i> Agregar Empleado</button>
+						<?php 
+						if($_SESSION["tipo"] == "Adm"){
+						?>
 						<button id="list-usuarios" class="list-group-item list-group-item-action bg-light"><i class="fas fa-address-card"></i> Lista de Usuarios</button>
-						<button id="list-empleado" class="list-group-item list-group-item-action bg-light"><i class="fas fa-address-book"></i> Lista de Empleados</button>
-						<a href="#" class="list-group-item list-group-item-action bg-light">Events</a>
-						<a href="#" class="list-group-item list-group-item-action bg-light">Profile</a>
-						<a href="#" class="list-group-item list-group-item-action bg-light">Status</a>
+						<?php }?>
+						<button id="list-empleado" class="list-group-item list-group-item-action bg-light"><i class="fas fa-address-book"></i> Lista de Empleados</button>						
+						<button id="reporte" class="list-group-item list-group-item-action bg-light"><i class="fas fa-file-alt"></i> Reporte</button>
 					</div>
 				</div>
 				<!-- /#sidebar-wrapper -->
@@ -54,9 +60,6 @@
 							<ul class="navbar-nav ml-auto mt-2 mt-lg-0">
 								<li class="nav-item active">
 									<a class="nav-link" href="../">Inicio <span class="sr-only">(current)</span></a>
-								</li>
-								<li class="nav-item">
-									<a class="nav-link" href="#">Link</a>
 								</li>
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -92,7 +95,6 @@
 </body>
 <!-- Bootstrap core JavaScript -->
 <script type="text/javascript" src="../JS/jquery-3.2.1.min.js"></script>	
-<script type="text/javascript" src="../JS/sweetalert.min.js"></script>
 <script src="../JS/bootstrap.bundle.min.js"></script>
 <script type="text/javascript" src="../JS/datatables.min.js"></script>
 <!-- Menu Toggle Script -->
@@ -114,6 +116,36 @@
 					$('#agemp').val("Continuar");
 					if (data=="1"){
 						swal("Perfecto!!", ("Ahora el empleado " + empleado + " ya esta en el sistema" ), "success");
+						document.getElementById("empleado").value = "";
+						document.getElementById("empresa").value = "";
+					}else{
+						swal("Tenemos un problema", "Usuario o contraseña incorrecta" , "error");
+					}
+				}
+			});
+		}else{
+			swal("No me engañes", "Por favor ingresa un usuario y una contraseña" , "error");
+		};
+	};
+
+		function modificarempleado(){
+		var empleado = $('#empleado').val();
+		var empresa = $('#empresa').val();
+		var id = $('#idempleado').val();
+
+		if ($.trim(empleado).length > 0 && $.trim(empresa).length > 0){
+			$.ajax({
+				url: "../PHP/mod_empleado.php",
+				method: "POST",
+				data: {empleado:empleado, empresa:empresa, id:id},
+				cache: "false",
+				beforeSend:function(){
+					$('#agemp').val("Validando...");
+				},
+				success:function(data){
+					$('#agemp').val("Continuar");
+					if (data=="1"){
+						swal("Perfecto!!", ("Ahora el empleado " + empleado + " ya esta modificado" ), "success");
 						document.getElementById("empleado").value = "";
 						document.getElementById("empresa").value = "";
 					}else{
@@ -222,6 +254,10 @@
 		$("#Contenedor").load('admin/list_Usuarios.php');
 		$("#wrapper").toggleClass("toggled");
 	});
+	$("#reporte").click(function(event) {
+		$("#Contenedor").load('admin/reporte.php');
+		$("#wrapper").toggleClass("toggled");
+	});
 
 	function eliminarUsuario(idusuairo){
 		$.ajax({
@@ -239,6 +275,27 @@
 					$("#Contenedor").load('admin/list_Usuarios.php');
 				}else{
 					swal("Tenemos un problema", "No se pudo eliminar el usuario" , "error");
+				}
+			}
+		});
+	};
+
+	function eliminarEmpleado(idempleado){
+		$.ajax({
+			url: "../PHP/eliminar_empleado.php",
+			method: "POST",
+			data: {id:idempleado},
+			cache: "false",
+			beforeSend:function(){
+				$('#eliminarempleado').val("Eliminando...");
+			},
+			success:function(data){
+				$('#eliminarempleado').val("Eliminar");
+				if (data=="1"){
+					swal("Empleado Eliminado", ("Ahora el Empleado ya NO esta en el sistema" ), "success");
+					$("#Contenedor").load('admin/list_Empleados.php');
+				}else{
+					swal("Tenemos un problema", "No se pudo eliminar el empleado" , "error");
 				}
 			}
 		});
@@ -279,7 +336,7 @@
 			success:function(data){
 				document.getElementById("empleado").value=""+data[1]+"";
 				var select = document.getElementById('empresa');
-				
+				document.getElementById("idempleado").value=""+data[0]+"";
 				if(data[2] == "CBA"){
 					select.selectedIndex=1;
 				}else{

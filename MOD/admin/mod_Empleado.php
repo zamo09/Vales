@@ -18,6 +18,7 @@
 					<div class="row justify-content-md-center">
 						<label class="titulos2"><i class="fas fa-industry "></i> Empresa: </label>
 					</div>
+					<input type="text" id="idempleado" hidden>
 					<div class="row">
 						<select class="custom-select text-center" id="empresa" name="empresa">
 							<option value="" selected>Selecciona una empresa ...</option>
@@ -32,7 +33,7 @@
 					<button class="btn btn-danger" onClick="salida()" type="sumit"><i class="fas fa-times "></i> Cancelar </button>					
 				</div>&nbsp;&nbsp;
 				<div class="col-md-2">
-					<button class="btn btn-info" onClick="agregarempleado()" name="agemp" id="agemp"><i class="fas fa-check-circle"></i> Modificar</button>
+					<button class="btn btn-info" onClick="modificarempleado()" name="agemp" id="agemp"><i class="fas fa-check-circle"></i> Modificar</button>
 				</div>
 			</div>
 		</div>

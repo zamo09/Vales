@@ -155,3 +155,8 @@ CREATE TABLE usuarios(
 );
 
 INSERT INTO usuarios (usuario,contraseña,tipo,activo) VALUES ('Samuel','123','Adm',1);
+
+SELECT P.id, P.nombre, P.unidad, V.cantidad, V.precio, V.fecha, E.nombre, Va.id_venta 
+FROM productos P, venta V, empleados E, vale Va 
+WHERE P.id = V.id_producto AND Va.id_venta = V.id_venta AND E.id_empleado = Va.id_empleado 
+AND V.fecha >= '2019-03-01' AND V.fecha <= '2019-03-23' Order By V.fecha;
